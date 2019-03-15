@@ -65,7 +65,11 @@ For this installation, you can install Visual Studio 2017 and install the C++ fu
 
 Navigate to the website: https://mingw-w64.org/doku.php/download/mingw-builds. Download the executable from the sourceforge link and run the executable. You will be directed to a screen that has Version, Architecture, threads, etc. This looks intimidating and scary, however what you need to focus on is the `Architecture`, if you need the 32-bit for your computer, leave it at `i686`. If you need the 64-bit version, select `x86_64` from the drop down menu. 
 
-Click next and let MinGW install in the default location, you may change this install location if you wish.
+Click next and let MinGW install in the default location, you may change this install location if you wish. Click next to install. Click finish and follow the next set of instructions.
+
+In Windows 10, on your search bar, search for `This PC`, right click on `This PC` and select `Properties`. In the top left section, you will see an option called `Advanced system settings`, click on it. You will see a new window open, towards the bottom of that window select `Environment Variables...`. You will then see your `Environment Variables`. We need to add `C++ bin's` to our `Path` in order to be able to compile any C++ code. This is also required to do for CLion. Click on `Path`, once `Path` is high lighted, click on `Edit...`. This is where you will add the `bin` of C++. Click `New` and then click `Browse...`. Depending on your install version (32 bit vs 64) you will need to go to where the folder installed. For me it was in `This PC` -> `C:` -> `Program Files` (this could be Program Files(x86) if you installed the 32 bit version) -> `mingw-w64` -> `x86_64-8.1.0-posix-seh-rt_v6-rev0` -> `mingw64` -> `bin`. `bin` is the folder you want to click on, then click `ok`. Then click `ok` until you get to the original `Properties` page.
+
+Next, open up your terminal. Close the one you had open previously since we need to reload the path variables. Next type `g++ --version` to verify that you have successfully installed C++ as the latest version should appear on your screen.
 
 # Hello, World!
 
