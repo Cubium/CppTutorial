@@ -112,7 +112,7 @@ mkdir "Make Directory"
 
 ### Compiling Hello, World!
 
-Open up your terminal and navigate to the location of `hello.cpp`. (Note: If you are using Visual Studio or XCode this section can be skipped, however, I highly encourage you to follow along to learn more about the command line!) If you are using VS/XCode simply build and run the project and skip to the [Explanation of the Code](#explanaiton-of-the-code) section. 
+Open up your terminal and navigate to the location of `hello.cpp`. (Note: If you are using Visual Studio or XCode this section can be skipped, however, I highly encourage you to follow along to learn more about the command line!) If you are using VS/XCode simply build and run the project and skip to the [Explanation of the Code](#explanation-of-the-code) section. 
 
 How do we navigate? For example, say my `hello.cpp` is located in `Documents`. Well, how do we know where we are? In Windows, we have a handy bar that shows our location. If it reads: `C:\Users\YourUserName` then we know that we are in the C Drive, Users, and our specific folder! Well now we want to be able to *change directories*. In Linux/OSX type `ls` to display the contents in the directory we are in. In Windows, type `dir`. You should see a bunch of stuff on the terminal screen. What is it? This is the contents of the current directory you are in. You should see `Documents`, `Downloads`, `Pictures`, etc. Well we want to *change directories* into `Documents`. So in order to do that we will type in the terminal:
 
