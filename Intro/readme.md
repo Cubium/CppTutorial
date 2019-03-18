@@ -1,6 +1,6 @@
 # Intro to Git, installing C++, and Hello World!
 
-Greetings! You are now stepping into the wonderful world of Git and C++! Git is an essential tool for all developers and it is very important that you become proficient with this tool. If you already know Git, go ahead and jump down to the Hello, World! Section below!
+Greetings! You are now stepping into the wonderful world of Git and C++! Git is an essential tool for all developers and it is very important that you become proficient with this tool. If you already know Git, go ahead and jump down to the [Hello World!](#hello-world!) Section below!
 
 ## Setting up Git on your Machine
 
@@ -71,13 +71,13 @@ In Windows 10, on your search bar, search for `This PC`, right click on `This PC
 
 Next, open up your terminal. Close the one you had open previously since we need to reload the path variables. Next type `g++ --version` to verify that you have successfully installed C++ as the latest version should appear on your screen.
 
-# Hello, World!
+# Hello World!
 
-In C++ we have two different type of files. The first file type, commonly referred to as Source Files, have the extension `.cpp` For C Plus Plus. The second file type, is known as a header file with the extension `.hpp`. For this specific Hello, World. We will only use a single source file.
+In C++ there are two different type of files, `.cpp` and `.hpp`. The first file type, commonly known as a source file, has the extension `.cpp` for C Plus Plus. The second file type is known as a header file with the extension `.hpp`. For your first Hello World program we will only use a single source file (`.cpp`).
 
-In your favorite text editor or IDE, create a file called `hello.cpp` and place it in your `Documents` Folder. In Visual Studio/XCode you will need to create a project for this. In this specific tutorial, I will be focusing on compiling code on the command line. Getting familiar with the command line is very important and will make you a better developer!
+In your favorite text editor or integrated development enviroment (IDE), like Visual Studio, CLion or XCode, start a new project and call it HelloWorld. If you are using a text editor and the commandline create a new folder titled HelloWorld and file called `hello.cpp`. In this tutorial I will focus on compiling code on the command line. Getting familiar with the command line is important and it will make you a better developer to know what is going on under the hood!
 
-Either type this (which I encourage the most) or copy and paste this into your code:
+Type the following snippit into `hello.cpp` (which I encourage the most), don't copy and paste, you'll write bugs, every, single, time!
 
 ```cpp
 #include <iostream>
@@ -86,7 +86,7 @@ int main()
 {
   std::cout << "Hello, World!" << std::endl;
 
-  return 0;
+  return EXIT_SUCCESS;
 }
 ```
 
@@ -112,7 +112,7 @@ mkdir "Make Directory"
 
 ### Compiling Hello, World!
 
-Open up your terminal and navigate to the location of `hello.cpp`. (Note: If you are using Visual Studio or XCode this section can be ignored, however, I highly encourage you to follow along to learn more about the command line!) If you are using VS/XCode simply build and run the project and skip to the *Explanation of the Code* Section. 
+Open up your terminal and navigate to the location of `hello.cpp`. (Note: If you are using Visual Studio or XCode this section can be skipped, however, I highly encourage you to follow along to learn more about the command line!) If you are using VS/XCode simply build and run the project and skip to the [Explanation of the Code](#explanaiton-of-the-code) section. 
 
 How do we navigate? For example, say my `hello.cpp` is located in `Documents`. Well, how do we know where we are? In Windows, we have a handy bar that shows our location. If it reads: `C:\Users\YourUserName` then we know that we are in the C Drive, Users, and our specific folder! Well now we want to be able to *change directories*. In Linux/OSX type `ls` to display the contents in the directory we are in. In Windows, type `dir`. You should see a bunch of stuff on the terminal screen. What is it? This is the contents of the current directory you are in. You should see `Documents`, `Downloads`, `Pictures`, etc. Well we want to *change directories* into `Documents`. So in order to do that we will type in the terminal:
 
@@ -140,19 +140,19 @@ C++ is top down code, meaning the compiler starts from the very beginning of the
 #include <iostream>
 ```
 
-This is telling the compiler, I want to include the iostream (input/output stream) library. Whenever we want to print something to the console, we must include the library. The way we include libraries is `#include`. (Pound Include, not hashtag include!). Let us move on to the next line of code:
+This is telling the compiler, I want to include the iostream (input/output stream) library. Whenever we want to interact with the user (print or read from the console), we must include this library. The way we include libraries is `#include`. (Pound Include, not __hashtag__ include!). Let's move on to the next line:
 
 ```cpp
 int main()
 ```
 
-This is arguably the most important piece of code in this entire file. This is our main driver, the ignition to our car, the power button to the TV. Every program must have a driver in order for it to run. And every C++ program will have `int main()` in the code as it is required. Let us move on to the next line:
+This is arguably the most important piece of code in this entire file. This is our main driver, the ignition to our car, the power button to the TV. Every C++ program must have a main function in order for it to run, it is where the program starts running. Every C++ program will have `int main()` in its code, it's required. Let's move on to the next line:
 
 ```cpp
 {
 ``` 
 
-This is important! And I put this in a single line because every function or method within C++ must start and end with curly braces. This is known as the scope. And when we put the scope together we have something like this:
+This is important! And I put this in a single line because every function or method within C++ starts and ends with curly braces. This is known as a scope and a `{` opens a new scope. When we put the scope together we have something like this:
 
 ```cpp
 int main()
@@ -161,33 +161,37 @@ int main()
 } // end of scope
 ```
 
-Every curly brace, every parenthesis, and every bracket will have a close associated with it. However each function will have a scope. Now let us move on to the next line:
+Every curly brace, every parenthesis, and every bracket will have a closing one associated with it. However each function will have a scope. Now let us move on to the next line:
 
 ```cpp
   std::cout << "Hello, World!" << std::endl;
 ```
 
-Wow! What a mouthful that statement is! Knowing the output of the file, you're probably thinking, "That is what I have to do in order to print something out to the console?!" And the answer is yes! But let me tame this scary statement and put it into a readable sentence let us start with `std`. `std` simply means Standard (not S.T.D's!!). And now let us look at `::`, this is from the scope of the Standard library. So now let us look at `cout`, this stands for Console Out. So let us put that all together `std::cout`, this reads, "In the namespace of the standard library, use Console Out". Next let us look at `<<` I have always called these waka-waka, like the sound Pac-Man makes. However, the official syntax is actually called Input. Now let us look at `"Hello, World!". This is simply a string, you can change this string to whatever you want to change it to! Experiment. And yes, every string should begin with quotations. 
+Wow! What a mouthful that statement is! Knowing the output of the file, you're probably thinking, "That is what I have to do in order to print something out to the console?!" And the answer is yes! But let me tame this scary statement and put it into a readable sentence let us start with `std`. `std` simply means the standard library (not S.T.D's!!). The `::` tells the compiler where to look for the following thing, in this case `cout`. So now let us look at `cout`, this stands for Console Out. So let us put that all together, `std::cout` means, "In the standard library, use Console Out".
 
-So let us put that sentence together `std::cout << "Hello, World!"`. This simply reads, "In the namespace of the Standard Library, use Console Out and insert the string "Hello, World!" into Input." Great! Now we just have one final piece to look at!
+Next let us look at `<<`. I have always called these things waka-wakas, like the sound Pac-Man makes. However, their official name is actually the stream insertion operator. You use `<<`'s to put things onto `cout`. I like to remember it like arrows pointing to which way the information is going, towards the `cout`.
 
-`std::endl`, well you already know what `std::` means, so all we have to decipher is the `endl` part. And it's actually really simple! It simply means End Line. This tells the `cout` stream that we are ending the line there and anything after that will need to be on a new line. So let us put it all back together!
+Now let us look at `"Hello, World!"`. This is a string, you can change this string to whatever you want to change it to! Go ahead and experiment. And yes, every string begins and ends with quotations. 
 
-`std::cout << "Hello, World!" << std::endl;` This simply reads, "In the namespace of the Standard Library, use Console Out and insert the string "Hello, World!" into Input. Then in the namespace of the Standard Library end the line.
+So let's put that whole line together `std::cout << "Hello, World!"`. This simply reads, "In the standard library, use Console Out and insert the string "Hello, World!" onto it." Great! Now we just have one final piece to look at!
 
-Now there is one tiny little guy that I have ignored but will finally address. `;` <--- The semi-colon is equivalent to the period in English grammer. We end each of our statements with a semi-colon. Now that we have covered that big thing, let us go ahead and move on to the next line of code!
+`std::endl`, well you already know what `std::` means, so all we have to decipher is the `endl` part. And it's actually really simple! It means End Line. This tells the `cout` stream that we are ending the line there and anything after that will need to be on a new line. So let us put it all back together!
+
+`std::cout << "Hello, World!" << std::endl;` This simply reads, "In the standard library, use Console Out and insert the string "Hello, World!" onto it. Then in the standard library, use the end line.
+
+Now there is one tiny little guy that I have ignored but will finally address. `;` <--- The semi-colon is equivalent to the period in English. We end each of our statements with a semi-colon. Now that we have covered that big thing, let us go ahead and move on to the next line of code!
 
 ```cpp
-  return 0;
+  return EXIT_SUCCESS;
 ```
 
-This simply tells the compiler we have finished our program. Will you please kindly exit for us? This statement isn't necessary to have, however some can debate it however they want to. Now the final bit of code:
+This line is our programs way of telling the operating system "I have successfully finished running". Now the final bit of code:
 
 ```cpp
 }
 ```
 
-This closes the scope of the program and now the compiler knows that we have reached the end of a function. So always keep in mind that every begining of a scope must have an end to a scope.
+This closes the scope of the program and now the compiler knows that we have reached the end of a function. So always keep in mind that every beginning of a scope must have an end to a scope.
 
 # Take a Break!
 
@@ -197,141 +201,16 @@ If that was a lot to dive into, take a break! Browse some of your favorite memes
 
 Before we continue, we must learn about git and how to use it. So [Click Here](../IntroToGitHub/readme.md) to be taken to the Git Hub Tutorial. Come back here where you are finished!
 
-# Types in C++
-
-This is a very imporant list and it is important that we get familiar with them:
-
-```cpp
-int    \\ integers
-double \\ floating point number
-float  \\ floating point number
-
-char   \\ an 8-bit character
-string \\ an array or vector of characters.
-
-bool   \\ a boolean, true or false
-```
-
-# Logical Operators
-
-A logical operator is how we perform logic in C++, this is also very important to learn and understand each logical operator:
-
-```cpp
-||  \\ or
-&&  \\ and
-```
-# Comparison Operators
-
-This is how we do comparisons in C++. We will come back to this in a later subject but it is important to get familiar with it now.
-
-```cpp
-<   \\ less than
-<=  \\ less than or equal to
->   \\ greater than
->=  \\ greater than or equal to
-==  \\ equal to
-!=  \\ not equal to
-```
-
-# Arithmetic Operators
-
-These are our basic mathematical operators to perform basic math skills. There are other variations that we will discuss in a later topic.
-
-```cpp
-+   \\ add
--   \\ subtract
-\   \\ divide
-*   \\ multiply
-%   \\ modulous 
-```
-### Declaring the Types
-
-Whenever we have a type we must follow it with a name and then assign it a value. In C++ the assignment operator is `=`. This is not to be confused with `==` the logical operator. The single equal sign is *Assignment* and the double equal is for *Comparison* which we will touch on later.
-
-```cpp
-#include <iostream>
-#include <string>
-
-int main()
-{
-  int x = 0;
-  double y = 2.0;
-  float z = 3.1;
-
-  char a = 'a';
-  std::string name = "Bob";
-
-  bool isReady = false;
-
-  return 0;
-}
-```
-
-Why did I include `string`? Well in order to use a string, I need to include it from the standard library. 
-
-With each of these we can actually output them to our screen. So let us modify this simple program:
-
-```cpp
-#include <iostream>
-#include <string>
-
-int main()
-{
-  int x = 0;
-  double y = 2.0;
-  float z = 3.1;
-
-  char a = 'a';
-  std::string name = "Bob";
-
-  bool isReady = false;
-
-  std::cout << x << std::endl;
-  std::cout << y << std::endl;
-  std::cout << name << std::endl;
-  
-  return 0;
-}
-```
-
-Try compiling this program! What is the outcome?
-
 # Challenge #1
 
-Write a program with the following requirements:
+Navigate to the CppTutorial repository and in your command line create a new branch with your name as the branch. For example, `git branch Raul` then `git checkout Raul`. Or you can combine them and do `git checkout -b Raul` (I'll get to what this means at the bottom). Obviously replace Raul with your own name. 
 
-Navigate to the C++ Github Repository and in your command line create a new branch with your name as the branch. For example, `git checkout -b Raul` (I'll get to what this means at the bottom), replace Raul with your name. 
+Create a new directory within the directory named `Submission` and name it challenge1. Then create a C++ source file in the `challenge1` directory and name it `hello.cpp`. 
 
-Create a new Folder within the folder named `Submission` in the C++ Repository and name it after yourself. Then create a c++ source file in the folder you named after yourself and name it `main.cpp`. 
+Get your hello world program to compile and run inside the new directory. Then play around with changing and adding more strings. You can chain the `<<`'s together like this `std::cout << "Hello" << "World" << std::endl;`.
 
-In `main.cpp` I would like to see you display the following statement:
+# Pushing to GitHub
 
-Joe, who is 18 years old, is going out to lunch with his friend Drew, who is 19 year old. Joe decides to order a sandwich which costs him a total of $5.32. Drew, decides to order a soup which costs him $3.25. 
+When you are ready to push your submission to github you will need to open up your command line and navigate to the CppTutorial directory, Submission, challenge1. Remember the basic rules of pushing up to Github are as follows: add, commit, push.
 
-Using appropriately named variables, please assign Joe's and Drew's age to an appropriate variable. Assign Joe's and Drew's name to an appropriate variable, assign Joe's and Drew's food item to an appropriate variable, and assign Joe's and Drew's meal cost to an appropriate variable and display that all to the console.
-
-Note: Do not simply do something like the following:
-
-```cpp
-int main()
-{
-  std::cout << "Joe is 18 years old. He ordered a sandwich and he spent $5.32 on it." << std::endl;
-}
-```
-
-Instead, do something like the following (yes, this is a hint):
-
-```cpp
-int main()
-{
-  std::cout << name1 << " is " << joesAge << " years old.";
-}
-```
-
-Have fun with it. Make sure you can compile and submit it through github.
-
-# Pushing to Git
-
-When you are ready to push up to github. You will need to open up your command line and navigate to your Folder within the C++ Repository. Remember the basic rules of pushing up to Github are as follows: add, commit, push.
-
-So when you are ready, you will type in your command line: `git add main.cpp`. This will add it into the queue of files to be committed for pushing. Next, you will type `git commit -m "Leave a helpful comment here"`. This means, I am committing this file to be pushed, and this is my reason why. Replace the Leave a helpful comment here with an actual comment such as. "I have finished the first challenge." Or "I am having issues with printing out a name, I need to look into this some more." Finally, type `git push origin yourBranchName` in this case, I would do `git push origin Raul`. Create a pull request and I will go over and verify your code! If it compiles, I will merge your branch into master! If it doesn't, I will reject it and ask for you to make changes to your code. If you need help, create an issue on the Git Hub page and ask a question. I will answer as soon as I can! 
+So when you are ready, you will type in your command line: `git add hello.cpp`. This will add `hello.cpp` to the queue of files to be committed. Next, you will type `git commit -m "Leave a helpful comment here"`. This means, I am committing this file and this is my reason why. Replace the Leave a helpful comment here with an actual comment such as. "I have finished the first challenge." Finally, type `git push origin yourBranchName` in this case, I would do `git push origin Raul`.
