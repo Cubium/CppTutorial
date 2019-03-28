@@ -207,10 +207,10 @@ A `C` if the score is between 70 and 80.
 A `D` if the score is between 60 and 70.
 And an `F` for anything below 60. 
 
-Ex:
-Enter your score: 94
-B
-Enter your score: 95
+Ex:</br>
+Enter your score: 94</br>
+B</br>
+Enter your score: 95</br>
 A
 
 Have fun with it! And remember to submit your code on your branch! Reach out if you need any help!
