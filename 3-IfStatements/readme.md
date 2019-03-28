@@ -32,7 +32,9 @@ int main()
 
 Before you copy this program to compile and run yourself try and read this code. What do you think will happen? What is going on? Try and get comfortable with the syntax and break it down. The more time you spend reading it now, it will become a lot less intimidating in the future!
 
-Okay so now that you have given it a try. Copy this program, compile it, and run it. What happened? What your initial hunch right? Obviously 5 is less that 7. So it will hit the first `if` statement, evaluate it, and return whether or not that is true. Now what do I mean by return `true`? `if` statements are designed by default to enter their scope only if what is in the parentheses is `true`. Okay so change `x` to be equal to `7` (`int x = 7`). What is going to happen? Compile and run the program! This time we got a different print statement! That is because `x` is not less than 7, however, it is equal to 7 because it's value is 7. So the second `if` statement, evaluates to `true` and enters that scope. Alrighty, so now let us change `x` to be equal to `10`. Compile and run your program. You get the gist now right? Let's explain the `if` statement.
+Okay, now that you have given it a try, copy this program, compile it, and run it. What happened? Was your initial hunch right? Obviously 5 is less that 7, so the condition in the first `if` statement will be true and the statement inside will be run and the rest will be skipped. `if` statements only execute the statements inside them if the condition in parentheses is `true`. Then all other `else if` and `else` are skipped. 
+
+Okay so change `x` to be equal to `7` (`int x = 7`). What is going to happen? Compile and run the program! This time we got a different print statement! That is because `x` is not less than 7, however, it is equal to 7 because it's value is 7. So the condition in the second `if` statement evaluates to `true` and the program enters that scope. Alrighty, now let's change `x` to be equal to `10`. Compile and run your program. This time, since `x < y` is false, and `x == y` is false, the program goes into the `else` statement. The else is a "catchall"; no matter what is in the previous conditions, if they are all false, the else statement will be executed.
 
 ```cpp
   if(thingIsTrue)
@@ -41,7 +43,7 @@ Okay so now that you have given it a try. Copy this program, compile it, and run
   }
 ```
 
-This is pretty much the `if` statement broken down into English. If the `argument/s` inside the parentheses is/are true, then enter the scope and execute the code inside that block. Okay, so let us add the next part:
+This is pretty much the `if` statement broken down into English. If the `condition/s` inside the parentheses is/are true, then enter the scope and execute the code inside that block. Okay, so let us add the next part:
 
 ```cpp
   if(thingIsTrue)
@@ -54,7 +56,7 @@ This is pretty much the `if` statement broken down into English. If the `argumen
   }
 ```
 
-This we have combined with the `else if` statement. Essentially, `else if` is only evaluated if the previous `if` statement's `argument/s` has evaluated to `false`. Let us add the last one now:
+Here we have combined the `if` with the `else if` statement. Essentially, `else if` is only evaluated if the previous `if` statement's `condition/s` has evaluated to `false`. Let us add the last one now:
 
 
 ```cpp
@@ -72,23 +74,7 @@ This we have combined with the `else if` statement. Essentially, `else if` is on
   }
 ```
 
-The final `if` statement is the `else` statement. This basically means, everything above me has evaluated to `false` so therefore I am `true` and I will execute this piece of code. These are very powerful to use and we will be playing with them shortly!
-
-Note, that you can chain `if` statements together, but be careful! They can have **unintended** consequences if you are not thinking about it logically! For example:
-
-```cpp
-
-  if(thingIsTrue)
-  {
-    doThingInHere;
-  }
-  if(thingIsTrue)
-  {
-    doThingInHere;
-  }
-```
-
-So if you have two `if` statements and the thing that is true evaluates to `true` in both arguments, both will execute their codes! So try and pay attention to when you need `else if` vs another `if`. If you have a ton of arguments that you need to evaluate, you can also do:
+The final `if` statement is the `else` statement. This basically means, everything above me has evaluated to `false` so therefore I am `true` and I will execute this piece of code. These are very powerful to use and we will be playing with them shortly! Note, you can have as many `else if` statements as you want:
 
 ```cpp
   if(thingIsTrue)
@@ -103,15 +89,42 @@ So if you have two `if` statements and the thing that is true evaluates to `true
   {
     doThingInHere;
   }
-  else if(theAboveIsNotTrueButThisIsTrue)
-  {
-    doThingInHere;
-  }
+
+  ... more else if's
+
   else
   {
     everthingElseHasFailedSoThisIsTrue;
   }
 ```
+Note, just like the `else` is optional, so are the `else if`. You can have as many as you want or zero. It all depends on what you need to get done.
+
+```cpp
+  if(thingIsTrue)
+  {
+    doThingInHere;
+  }
+  else
+  {
+    guessTheFirstThingWasn'tTrue
+  }
+```
+
+Note, that you can chain plain `if` statements together, but be careful! They can have **unintended** consequences if you are not thinking about it logically! For example:
+
+```cpp
+
+  if(thing1IsTrue)
+  {
+    doThingInHere;
+  }
+  if(thing2IsTrue)
+  {
+    doThingInHere;
+  }
+```
+
+So if you have two `if` statements and `thing1` and `thing2` are `true`, then both will execute their statements!
 
 I think you get the picture! So let us move onto logical arguments. Ever heard of a truth table? Well let's have a look at the `&&` (and) operator's truth table:
 
@@ -125,7 +138,9 @@ F  F       F
 
 ```
 
-How do we read it? Basically first line underneath the equal signs says: "If a is true, and b is true, then a AND b is true". You can piece together the rest, know this by heart! Now let us look at the `||` (or) operator's truth table, this time say to yourself "If a is true, or b is true, then a or b is true":
+How do we read it? The first line under the equal signs says: "a is true, b is true, then a AND b is true". And requires both sides to be true in order for the whole statement to be true. That's why the second line says "a is true, b is false, then a AND b is false". You can piece together the rest, know this by heart!
+
+Now let us look at the `||` (or) operator's truth table, this time say to yourself "a is true, b is true, then a or b is true". As long as one or the other or both sides is true, the whole statement is true:
 
 ```
 a  b  a || b
@@ -176,20 +191,26 @@ int main()
 
 ```
 
-Compile and run this program. What happened? You saw multiple lines print on your screen and you are probably wondering why that is. Well try and break it down. Why did multiple lines print out? Well that is because of two things: The first, is because I used nothing but `if` statements. Remember what I said could happen? If you don't write your logic out carefully, then you can have some really wonky stuff go on with your code that you don't want to have happen. Try playing with this code! Is there something you can do to make sure that only one line prints?
+Compile and run this program. What happened? You should see multiple lines print on your screen. Let's break it down. Why did multiple lines print out? Well that is because of two things: The first, is because I used nothing but `if` statements. Remember how if statements work? If statements only skip to the end if they are a chain of `if`, `else if`, and `else`. Try playing with this code! Is there something you can do to make sure that only one line prints?
 
 # Challenge 3
 
 Now that you have an idea of what to do with if statements let's write a program using the previous knowledge that you have gained! 
 
-Write a simply grading program with the following criteria:
+Write a simple grading program with the following criteria:
 
-user input from the command line into an integer called `score`. (`std::cin`)
+The user will input from the command line into a variable called `score`. (use `std::cin`)
 
-The program will report an output of a grade A if the score is above 95. (Sundberg Standards xD)
-A grade B if the score is between 80 and 95.
-A grade C if the score is between 70 and 80.
-A grade D if the score is between 60 and 70.
-And a grade F for anything below 60. 
+The program will report the grade to be an `A` if the score is equal to or above 95. (Sundberg Standards xD)
+A `B` if the score is between 80 and 95.
+A `C` if the score is between 70 and 80.
+A `D` if the score is between 60 and 70.
+And an `F` for anything below 60. 
+
+Ex:
+Enter your score: 94
+B
+Enter your score: 95
+A
 
 Have fun with it! And remember to submit your code on your branch! Reach out if you need any help!
