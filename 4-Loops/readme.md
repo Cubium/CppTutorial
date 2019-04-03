@@ -143,3 +143,13 @@ While loops are better suited for when you need to keep looping an unknown numbe
 In the end, either kind of loop can be used for almost any situation. A way to know which loop to use is to think, do I need to keep repeating *while* some condition is true, or *for* a certain number of times?
 
 # Challenge #4
+
+Prime Numbers! This challenge is to write a program that will print out the first `n` integers. `n` should be input by the user when the program is run, then it should print out the first `n` primes starting with `1`. Example output could look something like this:
+
+```
+$ ./a.out
+enter an number: 15
+1, 2, 3, 4, 5, 7, 9, 11, 13, 17, 19, 23, 25, 29, 31,
+```
+
+To break up the task, try writing it in pieces. Determine if an arbitrary number is prime, if it is, print it out. Then keep track of how many primes you've found and keep going until you've found as many as the user specified. As always, if you have any questions, let us know!
