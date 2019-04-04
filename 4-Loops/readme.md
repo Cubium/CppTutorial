@@ -144,12 +144,12 @@ In the end, either kind of loop can be used for almost any situation. A way to k
 
 # Challenge #4
 
-Prime Numbers! This challenge is to write a program that will print out the first `n` integers. `n` should be input by the user when the program is run, then it should print out the first `n` primes starting with `1`. Example output could look something like this:
+Prime Numbers! This challenge is to write a program that will print out the first `n` prime numbers. `n` should be input by the user when the program is run, then it should print out the first `n` primes starting with `1`. Remember a prime number is any number number that is divisible by one and it's self. Example output could look something like this:
 
 ```
 $ ./a.out
 enter an number: 15
-1, 2, 3, 4, 5, 7, 9, 11, 13, 17, 19, 23, 25, 29, 31,
+1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43,
 ```
 
 To break up the task, try writing it in pieces. Determine if an arbitrary number is prime, if it is, print it out. Then keep track of how many primes you've found and keep going until you've found as many as the user specified. As always, if you have any questions, let us know!
