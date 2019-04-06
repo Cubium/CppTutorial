@@ -38,7 +38,7 @@ Go ahead and compile and run this code now. Was your intuition correct? Why did 
 
 ### Rule #1 Top Down
 
-Remember that C++ is a top down language. As a reminder, that your compiler reads everything from the top all the way down to the bottom. The following code is not legal or will not compile:
+Remember that C++ is a top down language. As a reminder, that your compiler reads everything from the top all the way down to the bottom. The following code is not legal and will not compile:
 
 ```cpp
 #include <iostream>
@@ -89,7 +89,7 @@ void printHi()
 ```
 What I have done here is told the compiler. "Hey, I have a function named `printHi()` and `printThere()`. That I will define later. I just wanted to give you a heads up." The compiler is okay with this, and will compile this code, only because the compiler now knows that `printHi()` and `printThere()` exists. 
 
-### Rule #2 Try to keep each function to seven lines
+### Rule #2 Try to keep each function to a maximum of seven lines
 
 As Dr. Kenneth Sundberg has told many of his students. If you have too many lines of code in a function, then you can probably break them up into a function to make it more readable. When there are too many lines of code within one block, it becomes difficult to read and thus becomes difficult to follow. Take a look at the following code:
 
@@ -128,7 +128,7 @@ int main()
 }
 ```
 
-I don't know about you, but this physically hurts to read this and there is a lot going on here. Especially when we can break this all up into functions to help us out. A lot of programming is about code reuse. Try not to repeat yourself when you do not need to! Try and look through your code, where can you use functions to help yourself out here?
+I don't know about you, but this physically hurts to read and there is a lot going on here. Especially when we can break this all up into functions to help us out and make it more readable. A lot of programming is about code reuse. Try not to repeat yourself when you do not need to! Try and look through your code, where can you use functions to help yourself out here?
 
 ```cpp
 #include <iostream>
@@ -156,7 +156,7 @@ int main()
 
   printSum(sum2);
   
-  int sum3 = sum + sum2;
+  int sum3 = getSum(sum,sum2);
   printSum(sum3);
   
   return EXIT_SUCCESS; 
@@ -167,7 +167,7 @@ Okay, you're probably giving me a lot of crap right now. "But Raul! You have 9 l
 
 ### Rule #3 Use Meaningful function names
 
-Arguably the most difficult thing in software engineering and software development is naming things. Naming objects is really hard, but we do need to do our best to go ahead and name functions that mean something. Don't do the following:
+Arguably the most difficult thing in software engineering and software development is naming things. Naming objects is really hard, but we do need to do our best to name functions that have meaning in our code base. Do not do the following:
 
 ```cpp
 #include <iostream>
@@ -213,7 +213,7 @@ int setXTo4()
 
 int main()
 {
-  int x = setXTo4;
+  int x = setXTo4();
   x = reassignX(x);
 
   std::cout << x << std::endl;
@@ -258,7 +258,7 @@ This breaks Rule \#3 as well, since we are also not just getting the sum of the 
 
 ### Rule #5 Return what you promise
 
-Exactly what that reads. Return what you promise that you state what your function will do. If you have a function that is called `getSum` then return the sum. If you have a function called `updateLocation` then update the location. This will make your programming much more readable and less confusing. Do not do the following:
+Exactly what that reads. Return what you promise what you have defined your function will do. If you have a function that is called `getSum` then return a summation. If you have a function called `updateLocation` then update a location. This will make your programming much more readable and less confusing. Do not do the following:
 
 ```cpp
 #include <iostream>
@@ -348,11 +348,11 @@ void swap(int x, int y)
   y = temp;
 }
 ```
-Here we have passed `x` and `y` by value. In other words, we have asked the compiler to make a copy of both of these variables when they enter this scope. What do I mean by that? Well, let me write this example down in a small story:
+Here we have passed `x` and `y` by value. In other words, we have asked the function to tell the compiler to make a copy of both of these variables when they enter this scope. What do I mean by that? Well, let me write this example down in a small story:
 
 Say that you are a machinist and you need a piece of metal that you just machined painted. However, you would still like to keep your piece of unpainted metal and you decide to make a copy of that piece of metal to send to the painter. So you send your copy to the painter and you still keep the original. The painter then paints the copy and then returns that to you. You then decide you like that painted copy so you throw away the original and you replace it with the newly painted copy.
 
-That is what pass by value means, we hand the compiler a copy of the variable that we handed it and ask it to do something with that copy. In this case, we have handed copies of `x` and `y` to the function `swap` and asked them to swap. However, we passed it into a `void()` function, meaning we will not get these copies back. Take a look at the following program:
+That is what pass by value means, we hand the function a copy of the variable and ask it to do something with that copy. In this case, we have handed copies of `x` and `y` to the function `swap` and asked them to swap. However, we passed it into a `void()` function, meaning we will not get these copies back. Take a look at the following program:
 
 ```cpp
 #include <iostream>
@@ -399,7 +399,7 @@ Let us look at the same function except now it has a small change that makes a H
 ```cpp
 void swap(int &x, int &y)
 ```
-This is called pass by reference. Meaning that we have passed the address of `x` and `y` into the function. What do I mean by address? When you declared the integer `x` and `y`, your compiler assigned their physical locations to somewhere in your computer's memory. So `x` and `y` officially have homes! You can even print out the address if you do `std::cout << &x << std::endl;` You'll get some hexidecimal number back, but that is where the address of `x` is. 
+This is called pass by reference. Meaning that we have passed the address of `x` and `y` into the function. What do I mean by address? When you declared the integer `x` and `y`, your compiler assigned their physical locations to somewhere in your computer's memory. So `x` and `y` officially have homes! You can even print out their addresses if you do something like `std::cout << &x << std::endl;` You'll get some hexidecimal number back, but that hex number is the address of `x`. 
 
 Okay so back to the story that I wrote. Say this time the machinist creates a piece of metal that needs to be painted. However, this time the machinist sends the original piece of metal to the painter. The painter then paints the piece of metal and returns it back to the machinist. So instead of having two copies of the piece of metal, the machinist has only one copy and it has been painted.  
 
@@ -436,9 +436,9 @@ int main()
 ```
 Now swapping the two numbers works. We have passed them by reference so `swap` is now modifying the original `x` and `y`. It has not received a copy of `x` and `y` but it has received their addresses. So try and get that cemented in your head. Sometimes this is easy for people to grasp, others like myself, took a long time to truly understand what that means. 
 
-When is it good to pass by reference? It is good to pass by reference when you need to make a modification to the value without creating a copy. This is especially important to know when you have that container of one million elements. Instead of created two containers of one million elements, you only use the original container that you gave it. Passing by reference can be very memory efficient. And when you are working in a language that boasts speed and efficiency. You have to know about when to pass by reference and when not to. 
+When is it good to pass by reference? It is good to pass by reference when you need to make a modification to the value without creating a copy. This is especially important to know when you have that container of one million elements. Instead of creating two containers of one million elements, you only use the original container that you gave it. Passing by reference can be very memory efficient. And when you are working in a language that boasts speed and efficiency. You have to know when to pass by reference and when not to. 
 
-When is it bad to pass by reference? When you DO NOT want to make ANY, and I mean ANY, modifications to the variable or container you pass it. I cannot stress this enough. C++ is a adult language. It does not hold your hand and it will do whatever you ask it to do. This can be extremely dangerous if you are creating a critical piece of software and you accidentally modify an address to your variable or container. If you know that you do not need to modify a variable or a container. Then you should pass it by constant reference or by value. 
+When is it bad to pass by reference? When you DO NOT want to make ANY, and I mean ANY, modifications to the variable or container you pass it. I cannot stress this enough. C++ is a adult language. It does not hold your hand and it will do whatever you ask it to do. This can be extremely dangerous if you are creating a critical piece of software and you accidentally modify an address, variable, or container. If you know that you do not need to modify a variable or a container. Then you should pass it by constant reference or by value. 
 
 ### Pass by Constant Reference
 
@@ -474,9 +474,9 @@ int main()
   return EXIT_SUCCESS;
 }
 ```
-Try compiling this code. It throws an error right? Why? Because we told the function swap, "I have given you two constant variables. Do not modify them!" So our compiler get's mad at us and asks us to fix it. So what does the reference do? Well it's the same thing as passing a value by reference. We have passed the address to the integers however we have asked the compiler to not modify them in any way. 
+Try compiling this code. It throws an error right? Why? Because we told the function swap, "I have given you two constant variables. Do not modify them!" So our compiler gets mad at us and asks us to fix it. So what does the reference do? Well it's the same thing as passing a variable by reference. We have passed the address to the integers however we have asked the compiler to not modify them in any way. 
 
-When is it good to pass by `const` reference? When you DO NOT want to make ANY modifications to your variables or containers! These are very good for reading for example, most strings and most containers if you are only performing then you want to pass by `const` reference. For example:
+When is it good to pass by `const` reference? When you DO NOT want to make ANY modifications to your variables or containers! These are very good for reading! For example, most strings and most containers you want to pass by `const` reference if you need to read them. For example:
 
 ```cpp
 void printString(const std::string &toPrint)
