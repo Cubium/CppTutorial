@@ -394,7 +394,7 @@ When is passing by value bad? I just showed above an example of why passing by v
 
 ### Pass by Reference
 
-Let us look at the same function except now it has a small change that makes a HUGE difference.
+Let us look at the same function except now it has a small change that makes a HUGE difference. In order to pass by reference we will now be introduced to the `&` operator. This is not to be confused with the operator `&&`, that is `and` the operator I have introduced to you is the reference operator:
 
 ```cpp
 void swap(int &x, int &y)
@@ -442,5 +442,52 @@ When is it bad to pass by reference? When you DO NOT want to make ANY, and I mea
 
 ### Pass by Constant Reference
 
-### Pass by Pointer
+So now I will introduce you to a keyword that we may have mentioned before: `const`, this means constant. Meaning that when we declare a variable constant, we cannot modify, or re-assign it's value. (Really, this is C++ and you can do whatever you want and in reality you can modify a `const` variable with some work but don't do it!) So what do I mean by `const` reference? Let's modify our code and I'll show you what I mean:
 
+```cpp
+
+#include <iostream>
+
+void print(int x, int y)
+{
+  std::cout << x << " " << y << std::endl;
+}
+
+void swap(const int &x, const int &y)
+{
+  int temp = x;
+  x = y;
+  y = temp;
+}
+
+int main()
+{
+  int x = 7;
+  int y = 5;
+  
+  print(x,y);
+
+  swap(x,y);
+
+  print(x,y);
+
+  return EXIT_SUCCESS;
+}
+```
+Try compiling this code. It throws an error right? Why? Because we told the function swap, "I have given you two constant variables. Do not modify them!" So our compiler get's mad at us and asks us to fix it. So what does the reference do? Well it's the same thing as passing a value by reference. We have passed the address to the integers however we have asked the compiler to not modify them in any way. 
+
+When is it good to pass by `const` reference? When you DO NOT want to make ANY modifications to your variables or containers! These are very good for reading for example, most strings and most containers if you are only performing then you want to pass by `const` reference. For example:
+
+```cpp
+void printString(const std::string &toPrint)
+{
+  std::cout << toPrint << std::endl;
+}
+```
+This passes the string `toPrint` by constant reference. So the only thing we can do with this is read from it. And that is what `std::cout` does, it only reads the value. So when is it good to pass by `const` reference? When you need a variable to be read only.
+
+When is it bad to pass by `const` reference? When you need to make a modification to your variable. In this case, swap cannot perform what it needs to do because the values are constant. 
+
+# Challenge #5 Part 1
+
+# Challenge #5 Part 2
